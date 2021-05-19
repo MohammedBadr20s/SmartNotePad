@@ -11,29 +11,23 @@ import RxRealm
 import RealmSwift
 
 class NotePadViewModel: BaseViewModel {
-    var liveNotes = PublishSubject<[NoteModel]>()
+    var liveNotes = BehaviorSubject<[NoteModel]>(value: [])
     
     let dataFactory: DataFactory
 
     required init(dataFactory: DataFactory) {
         self.dataFactory = dataFactory
         super.init()
-        self.loadAndListen()
+        
     }
     
     
     func loadAndListen() {
-        dataFactory.loadAndSubscribe(model: NoteModel.self).subscribe { (results: [NoteModel],changes:  RealmChangeset?) in
-            var notes: [NoteModel] = results
-            if let firstNote: NoteModel = results.sorted(by: {$0.creationDate ?? Date() > $1.creationDate ?? Date()}).first {
-                notes.removeAll(where: {$0.title == firstNote.title})
-                notes.insert(firstNote, at: 0)
-                
-            }
-            
+        dataFactory.loadAndSubscribe(model: NoteModel.self).bind(onNext: { (results: [NoteModel],changes:  RealmChangeset?) in
+            let notes: [NoteModel] =  results.sorted(by: {$0.creationDate ?? Date() > $1.creationDate ?? Date()})
             self.liveNotes.onNext(notes)
-        } onError: { (error: Error) in
-            print("Error: \(error.localizedDescription)")
-        }.disposed(by: self.disposeBag)
+        }).disposed(by: self.disposeBag)
     }
+    
+    
 }

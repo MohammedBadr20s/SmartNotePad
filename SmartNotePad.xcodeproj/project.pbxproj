@@ -11,6 +11,9 @@
 		6B6675061E9072894997F0FE /* Pods_SmartNotePad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743087D531813086C33C893B /* Pods_SmartNotePad.framework */; };
 		D559FA9044E42D4737CDAC07 /* Pods_SmartNotePad_SmartNotePadUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DDD2E0D531201BF5997DF5 /* Pods_SmartNotePad_SmartNotePadUITests.framework */; };
 		E54A9E072655A2DF00E0D4C0 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A9E062655A2DF00E0D4C0 /* UIViewController+Extensions.swift */; };
+		E54A9E1C2655A62900E0D4C0 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A9E1A2655A62900E0D4C0 /* NoteCell.swift */; };
+		E54A9E1D2655A62900E0D4C0 /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54A9E1B2655A62900E0D4C0 /* NoteCell.xib */; };
+		E58D22442655B4AD00460E07 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D22432655B4AD00460E07 /* UIImage+Extension.swift */; };
 		E5DBECD1265472330025D5BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBECD0265472330025D5BA /* AppDelegate.swift */; };
 		E5DBECD3265472330025D5BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBECD2265472330025D5BA /* SceneDelegate.swift */; };
 		E5DBECD5265472330025D5BA /* MyNotesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBECD4265472330025D5BA /* MyNotesListVC.swift */; };
@@ -77,6 +80,9 @@
 		D791D5080420D9C28930F9E7 /* Pods-SmartNotePad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartNotePad.release.xcconfig"; path = "Target Support Files/Pods-SmartNotePad/Pods-SmartNotePad.release.xcconfig"; sourceTree = "<group>"; };
 		DDE893A39E0E46AEF23F48CC /* Pods-SmartNotePadTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartNotePadTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartNotePadTests/Pods-SmartNotePadTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E54A9E062655A2DF00E0D4C0 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		E54A9E1A2655A62900E0D4C0 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		E54A9E1B2655A62900E0D4C0 /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
+		E58D22432655B4AD00460E07 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E5DBECCD265472330025D5BA /* SmartNotePad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartNotePad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5DBECD0265472330025D5BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5DBECD2265472330025D5BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +176,15 @@
 				8577AC27ECF606B02EC19FAE /* Pods-SmartNotePadTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E54A9E192655A61500E0D4C0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E54A9E1A2655A62900E0D4C0 /* NoteCell.swift */,
+				E54A9E1B2655A62900E0D4C0 /* NoteCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E5DBECC4265472330025D5BA = {
@@ -269,6 +284,7 @@
 		E5DBED38265472EB0025D5BA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E54A9E192655A61500E0D4C0 /* Cells */,
 				E5DBED3F2654738E0025D5BA /* MyNotesListVC.xib */,
 				E5DBECD4265472330025D5BA /* MyNotesListVC.swift */,
 				E5DBED45265473B20025D5BA /* NotesDetailsVC.xib */,
@@ -315,6 +331,7 @@
 				E5DBED9A265477CF0025D5BA /* Extensions.swift */,
 				E5DBEE0B26548ACB0025D5BA /* Realm+Extensions.swift */,
 				E54A9E062655A2DF00E0D4C0 /* UIViewController+Extensions.swift */,
+				E58D22432655B4AD00460E07 /* UIImage+Extension.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -514,6 +531,7 @@
 				E5DBED47265473B20025D5BA /* NotesDetailsVC.xib in Resources */,
 				E5DBED402654738E0025D5BA /* MyNotesListVC.xib in Resources */,
 				E5DBECD8265472330025D5BA /* Main.storyboard in Resources */,
+				E54A9E1D2655A62900E0D4C0 /* NoteCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +674,7 @@
 				E5DBEE0326547C830025D5BA /* NotePadCoordinator.swift in Sources */,
 				E5DBEE3326548D8C0025D5BA /* DataFactory.swift in Sources */,
 				E5DBEDCD265479190025D5BA /* Constants.swift in Sources */,
+				E54A9E1C2655A62900E0D4C0 /* NoteCell.swift in Sources */,
 				E5DBEDA7265477CF0025D5BA /* UIColor+Extension.swift in Sources */,
 				E5DBEE1726548BCE0025D5BA /* Injection.swift in Sources */,
 				E5DBED4D265473E00025D5BA /* Storyboarded.swift in Sources */,
@@ -667,6 +686,7 @@
 				E5DBEDBD265477CF0025D5BA /* Extensions.swift in Sources */,
 				E5DBEDAA265477CF0025D5BA /* CustomTextField.swift in Sources */,
 				E5DBEDC2265477CF0025D5BA /* CustomCollectionView.swift in Sources */,
+				E58D22442655B4AD00460E07 /* UIImage+Extension.swift in Sources */,
 				E5DBED672654773A0025D5BA /* BaseViewController.swift in Sources */,
 				E5DBECD3265472330025D5BA /* SceneDelegate.swift in Sources */,
 				E5DBED46265473B20025D5BA /* NotesDetailsVC.swift in Sources */,

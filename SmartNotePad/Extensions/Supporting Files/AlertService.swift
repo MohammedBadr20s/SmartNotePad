@@ -15,14 +15,17 @@ class AlertService {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         
         alert.view.tintColor = .black
-        for action in actions {
-            alert.addAction(action)
-        }
-        if let topVC = UIApplication.getTopMostViewController() {
-            alert.popoverPresentationController?.sourceView = topVC.view
-            alert.popoverPresentationController?.sourceRect = CGRect(x: topVC.view.bounds.midX, y: topVC.view.bounds.midY, width: 0, height: 0)
-            alert.popoverPresentationController?.permittedArrowDirections = []
-            topVC.present(alert, animated: true, completion: completion)
+        DispatchQueue.main.async {
+            for action in actions {
+                alert.addAction(action)
+            }
+            
+            if let topVC = UIApplication.getTopMostViewController() {
+                alert.popoverPresentationController?.sourceView = topVC.view
+                alert.popoverPresentationController?.sourceRect = CGRect(x: topVC.view.bounds.midX, y: topVC.view.bounds.midY, width: 0, height: 0)
+                alert.popoverPresentationController?.permittedArrowDirections = []
+                topVC.present(alert, animated: true, completion: completion)
+            }
         }
     }
     

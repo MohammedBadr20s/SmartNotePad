@@ -13,7 +13,7 @@ import RxSwift
 
 class DataFactory {
     
-    private let localRepository: LocalRepository
+    let localRepository: LocalRepository
     init(localRepo: LocalRepository) {
         self.localRepository = localRepo
     }

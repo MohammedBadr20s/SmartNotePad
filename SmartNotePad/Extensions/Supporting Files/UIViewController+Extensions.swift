@@ -15,7 +15,6 @@ extension UIViewController {
         navigationController?.navigationBar.backIndicatorImage = backImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
         let barBtn = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        barBtn.tintColor = .darkGray
         navigationItem.backBarButtonItem = barBtn
     }
 
@@ -26,6 +25,7 @@ extension UIViewController {
 
     @objc private func openAddNoteView() {
         let vc = NotesDetailsVC.instantiate()
+//        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

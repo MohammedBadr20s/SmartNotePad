@@ -25,9 +25,10 @@ class NotePadCoordinator: Coordinator {
 }
 
 extension NotePadCoordinator: NoteNavigateDelegate {
-    func navigateToNotesDetailsScreen() {
+    func navigateToNotesDetailsScreen(note: NoteModel?) {
         let vc = NotesDetailsVC.instantiate()
-        
+        vc.note = note
+//        self.navigationController.isNavigationBarHidden = true
         self.navigationController.pushViewController(vc, animated: true)
     }
     

@@ -10,7 +10,8 @@ import RxSwift
 import RxCocoa
 
 protocol NoteNavigateDelegate {
-    func navigateToNotesDetailsScreen()
+    func navigateToNotesDetailsScreen(note: NoteModel?)
+    
 }
 
 class MyNotesListVC: BaseViewController {
@@ -24,18 +25,45 @@ class MyNotesListVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
 
     override func ConfigureUI() {
         self.title = "Notes"
         bindViewModel()
         setupTableView()
-        self.navigationbarAddNoteButton()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.loadAndListen()
     }
     
     func setupTableView() {
+        self.notesTableView.register(NoteCell.nib(), forCellReuseIdentifier: NoteCell.identifier)
+        
+        self.viewModel.liveNotes.observe(on: MainScheduler.instance).bind(to: self.notesTableView.rx.items) { [weak self] (tableView, row, element) -> UITableViewCell in
+            guard let self = self else { return NoteCell()}
+            
+            return self.ConfigureNoteCell(tableView: tableView, indexPath: IndexPath(row: row, section: 0), model: element)
+        }.disposed(by: self.viewModel.disposeBag)
+        
+        self.notesTableView.rx.itemSelected.bind { (index: IndexPath) in
+            
+            let data = try! self.viewModel.liveNotes.value()
+            self.navigationDelegate?.navigateToNotesDetailsScreen(note: data[index.row])
+
+        }.disposed(by: self.viewModel.disposeBag)
     }
 
+    private func ConfigureNoteCell(tableView: UITableView, indexPath: IndexPath, model: NoteModel) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.identifier, for: indexPath) as? NoteCell else { return NoteCell()}
+        let isNearest = indexPath.row == 0
+        let containsLocation = model.locationAddress != nil
+        let containsImage = model.imagePath != nil
+        cell.config(title: model.title ?? "", noteDescription: model.noteDescription ?? "", isNearest: isNearest, constainsLocation: containsLocation, containsImage: containsImage)
+        return cell
+    }
 }
 
 
@@ -50,7 +78,12 @@ extension MyNotesListVC {
             } else {
                 self.notesTableView.isHidden = false
                 self.FirstNoteView.isHidden = true
+                self.navigationbarAddNoteButton()
             }
+        }.disposed(by: self.viewModel.disposeBag)
+        
+        self.addBtn.rx.tap.bind { (_) in
+            self.navigationDelegate?.navigateToNotesDetailsScreen(note: nil)
         }.disposed(by: self.viewModel.disposeBag)
     }
 }
