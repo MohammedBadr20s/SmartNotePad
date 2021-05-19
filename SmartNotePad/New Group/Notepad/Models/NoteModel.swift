@@ -16,15 +16,17 @@ class NoteModel: Object, RealmBaseModel {
     @objc dynamic var locationAddress: String?
     dynamic var latitude = RealmOptional<Double>()
     dynamic var longitude = RealmOptional<Double>()
+    dynamic var distance = RealmOptional<Double>()
     @objc dynamic var imagePath: String?
     @objc dynamic var creationDate: Date?
 
-    init(title: String?, noteDescription: String?, locationAddress: String?, latitude: Double, longitude: Double, imagePath: String, date: Date?) {
+    init(title: String?, noteDescription: String?, locationAddress: String?, latitude: Double, longitude: Double, distance: Double, imagePath: String, date: Date?) {
         self.title = title
         self.noteDescription = noteDescription
         self.locationAddress = locationAddress
         self.latitude.value = latitude
         self.longitude.value = longitude
+        self.distance.value = distance
         self.imagePath = imagePath
         self.creationDate = date
     }

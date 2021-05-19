@@ -38,7 +38,6 @@
 		E5DBEDBD265477CF0025D5BA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBED9A265477CF0025D5BA /* Extensions.swift */; };
 		E5DBEDBE265477CF0025D5BA /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBED9B265477CF0025D5BA /* UIWindow+Extensions.swift */; };
 		E5DBEDC1265477CF0025D5BA /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBEDA1265477CF0025D5BA /* View+Extensions.swift */; };
-		E5DBEDC2265477CF0025D5BA /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBEDA3265477CF0025D5BA /* CustomCollectionView.swift */; };
 		E5DBEDC3265477CF0025D5BA /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBEDA4265477CF0025D5BA /* NotificationName+Extension.swift */; };
 		E5DBEDCD265479190025D5BA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBEDCC265479190025D5BA /* Constants.swift */; };
 		E5DBEDEE26547BD90025D5BA /* NotePadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBEDED26547BD90025D5BA /* NotePadViewModel.swift */; };
@@ -113,7 +112,6 @@
 		E5DBED9A265477CF0025D5BA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E5DBED9B265477CF0025D5BA /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
 		E5DBEDA1265477CF0025D5BA /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
-		E5DBEDA3265477CF0025D5BA /* CustomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		E5DBEDA4265477CF0025D5BA /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		E5DBEDCC265479190025D5BA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E5DBEDED26547BD90025D5BA /* NotePadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePadViewModel.swift; sourceTree = "<group>"; };
@@ -322,7 +320,6 @@
 				E5DBED79265477CF0025D5BA /* TextFields */,
 				E5DBED95265477CF0025D5BA /* Labels */,
 				E5DBEDA0265477CF0025D5BA /* CustomView */,
-				E5DBEDA2265477CF0025D5BA /* CollectionViews */,
 				E5DBED75265477CF0025D5BA /* UIColor+Extension.swift */,
 				E5DBED76265477CF0025D5BA /* HelperMethods.swift */,
 				E5DBED92265477CF0025D5BA /* AlertService.swift */,
@@ -366,14 +363,6 @@
 				E5DBEDA1265477CF0025D5BA /* View+Extensions.swift */,
 			);
 			path = CustomView;
-			sourceTree = "<group>";
-		};
-		E5DBEDA2265477CF0025D5BA /* CollectionViews */ = {
-			isa = PBXGroup;
-			children = (
-				E5DBEDA3265477CF0025D5BA /* CustomCollectionView.swift */,
-			);
-			path = CollectionViews;
 			sourceTree = "<group>";
 		};
 		E5DBEDCB2654790D0025D5BA /* Utilities */ = {
@@ -685,7 +674,6 @@
 				E54A9E072655A2DF00E0D4C0 /* UIViewController+Extensions.swift in Sources */,
 				E5DBEDBD265477CF0025D5BA /* Extensions.swift in Sources */,
 				E5DBEDAA265477CF0025D5BA /* CustomTextField.swift in Sources */,
-				E5DBEDC2265477CF0025D5BA /* CustomCollectionView.swift in Sources */,
 				E58D22442655B4AD00460E07 /* UIImage+Extension.swift in Sources */,
 				E5DBED672654773A0025D5BA /* BaseViewController.swift in Sources */,
 				E5DBECD3265472330025D5BA /* SceneDelegate.swift in Sources */,
