@@ -82,6 +82,7 @@ extension MyNotesListVC {
     //MARK:- Configure Note Cell Function
     private func ConfigureNoteCell(tableView: UITableView, indexPath: IndexPath, model: NoteModel) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.identifier, for: indexPath) as? NoteCell else { return NoteCell()}
+        guard model.isInvalidated == false else { return NoteCell()}
         var isNearest = false
         if indexPath.row == 0 && (model.distance.value != nil) {
             isNearest = true

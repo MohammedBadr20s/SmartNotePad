@@ -21,7 +21,7 @@ class NoteModel: Object, RealmBaseModel {
     @objc dynamic var creationDate: Date?
     @objc dynamic var updatedDate: Date?
 
-    init(title: String?, noteDescription: String?, locationAddress: String?, latitude: Double, longitude: Double, distance: Double, imagePath: String, creationDate: Date?, updatedDate: Date?) {
+    init(title: String?, noteDescription: String?, locationAddress: String?, latitude: Double?, longitude: Double?, distance: Double?, imagePath: String?, creationDate: Date?, updatedDate: Date?) {
         self.title = title
         self.noteDescription = noteDescription
         self.locationAddress = locationAddress

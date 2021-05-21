@@ -10,6 +10,7 @@
 		5F6F0F10AF4842E1E5A6085E /* Pods_SmartNotePadTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61AEFC1AF76417E1C8AA4A43 /* Pods_SmartNotePadTests.framework */; };
 		6B6675061E9072894997F0FE /* Pods_SmartNotePad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743087D531813086C33C893B /* Pods_SmartNotePad.framework */; };
 		D559FA9044E42D4737CDAC07 /* Pods_SmartNotePad_SmartNotePadUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DDD2E0D531201BF5997DF5 /* Pods_SmartNotePad_SmartNotePadUITests.framework */; };
+		E50988F62658608E00820939 /* NotesListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50988F52658608E00820939 /* NotesListTests.swift */; };
 		E54A9E072655A2DF00E0D4C0 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A9E062655A2DF00E0D4C0 /* UIViewController+Extensions.swift */; };
 		E58D22442655B4AD00460E07 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D22432655B4AD00460E07 /* UIImage+Extension.swift */; };
 		E5B8FD452657C9F3002E1779 /* NotePadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8FD362657C9F3002E1779 /* NotePadViewModel.swift */; };
@@ -152,6 +153,7 @@
 		8577AC27ECF606B02EC19FAE /* Pods-SmartNotePadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartNotePadTests.release.xcconfig"; path = "Target Support Files/Pods-SmartNotePadTests/Pods-SmartNotePadTests.release.xcconfig"; sourceTree = "<group>"; };
 		D791D5080420D9C28930F9E7 /* Pods-SmartNotePad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartNotePad.release.xcconfig"; path = "Target Support Files/Pods-SmartNotePad/Pods-SmartNotePad.release.xcconfig"; sourceTree = "<group>"; };
 		DDE893A39E0E46AEF23F48CC /* Pods-SmartNotePadTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartNotePadTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartNotePadTests/Pods-SmartNotePadTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E50988F52658608E00820939 /* NotesListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListTests.swift; sourceTree = "<group>"; };
 		E54A9E062655A2DF00E0D4C0 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		E58D22432655B4AD00460E07 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E5B8FD362657C9F3002E1779 /* NotePadViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotePadViewModel.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 		E5DBECE6265472340025D5BA /* SmartNotePadTests */ = {
 			isa = PBXGroup;
 			children = (
+				E50988F52658608E00820939 /* NotesListTests.swift */,
 				E5DBECE7265472340025D5BA /* SmartNotePadTests.swift */,
 				E5DBECE9265472340025D5BA /* Info.plist */,
 			);
@@ -1057,6 +1060,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5DBECE8265472340025D5BA /* SmartNotePadTests.swift in Sources */,
+				E50988F62658608E00820939 /* NotesListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
