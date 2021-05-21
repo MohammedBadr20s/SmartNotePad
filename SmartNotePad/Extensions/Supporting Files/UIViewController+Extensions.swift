@@ -10,22 +10,24 @@ import UIKit
 
 extension UIViewController {
     
-    func navigationbarBackButton() {
-        let backImage = UIImage(named: "back")?.withRenderingMode(.alwaysOriginal)
-        navigationController?.navigationBar.backIndicatorImage = backImage
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
-        let barBtn = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = barBtn
-    }
-
-    func navigationbarAddNoteButton() {
+    func navigationbarAddNoteButton(selector: Selector?) {
         let addImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: addImage, style: .plain, target: self, action: #selector(openAddNoteView))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: addImage, style: .plain, target: self, action: selector)
     }
-
-    @objc private func openAddNoteView() {
-        let vc = NotesDetailsVC.instantiate()
-//        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.pushViewController(vc, animated: true)
+    func showToast(message: String, status: Theme, position: SwiftMessages.PresentationStyle, duration: SwiftMessages.Duration = .seconds(seconds: 2)) {
+        DispatchQueue.main.async {
+            guard let _ = UIApplication.shared.keyWindow else { return }
+            let success = MessageView.viewFromNib(layout: .cardView)
+            success.configureTheme(status, iconStyle: .default)
+            success.configureDropShadow()
+            success.configureContent(title: "", body: message)
+            success.button?.isHidden = true
+            success.titleLabel?.isHidden = true
+            var successConfig = SwiftMessages.defaultConfig
+            successConfig.duration = duration
+            successConfig.presentationStyle = .bottom
+            successConfig.presentationContext = .automatic
+            SwiftMessages.show(config: successConfig, view: success)
+        }
     }
 }

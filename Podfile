@@ -12,6 +12,7 @@ target 'SmartNotePad' do
     pod 'RxRealm'
     pod 'IQKeyboardManagerSwift'
     pod 'Swinject'
+    pod 'GoogleMaps', '4.2.0'
 
 
   target 'SmartNotePadTests' do

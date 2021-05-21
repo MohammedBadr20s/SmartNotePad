@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             BaseCoordinator(navigationController: nvc).navigate(window: window)
             return true
         }
+        GMSServices.provideAPIKey("AIzaSyCWqqwZFgfz2izrtj9ObPNdlW7PzbAeDdE")
+
         return true
     }
 

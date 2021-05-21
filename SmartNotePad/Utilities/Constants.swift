@@ -14,6 +14,11 @@ enum Constants: String {
     case categories
     case googleAPIKey
     case environment
+    case distance
+    
+    func getDefaultDistance() -> Double {
+        return 100000000
+    }
 }
 
 

@@ -13,9 +13,11 @@ import RxSwift
 
 class DataFactory {
     
-    let localRepository: LocalRepository
+    private let localRepository: LocalRepository
+    let appRealm: Realm?
     init(localRepo: LocalRepository) {
         self.localRepository = localRepo
+        self.appRealm = self.localRepository.appRealm
     }
     
     
