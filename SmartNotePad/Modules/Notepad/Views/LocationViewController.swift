@@ -15,72 +15,55 @@ protocol LocationDelegate {
 
 class LocationViewController: BaseViewController {
     
-    
+    //MARK:- Outlets
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var addressLabel: UILabel!
+    
+    //MARK:- Properties
     var backDelegate: BackDelegate?
-    var locationManager: CLLocationManager?
-    let geocoder = GMSGeocoder()
+    var locationManager: LocationManager?
     var currentLocation: CLLocationCoordinate2D?
     var delegate: LocationDelegate?
+    
+    //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
     override func ConfigureUI() {
-        self.SetupCoreLocations()
-    }
-    //Setup Locations
-    func SetupCoreLocations() {
-        self.locationManager = CLLocationManager()
-        self.locationManager?.delegate = self
-        self.mapView.isMyLocationEnabled = true
-        self.mapView.settings.myLocationButton = true
-        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 10)
-        checkLocationAuthorization(manager: self.locationManager!)
-        mapView.delegate = self
-        GMSMarker().tracksViewChanges = false
-        GMSMarker().tracksInfoWindowChanges = false
-        print("Google Maps License \(GMSServices.openSourceLicenseInfo())")
+        self.title = "Pick Location"
+        self.locationManager = LocationManager(locationManager: CLLocationManager(), coreLocationDelegate: self, googleMapsDelegate: self, mapView: self.mapView, viewController: self)
     }
     
     
-    //Check Location Authorization Function
-    func checkLocationAuthorization(manager: CLLocationManager) {
-        if CLLocationManager.locationServicesEnabled() {
-            switch manager.authorizationStatus {
-            case .notDetermined:
-                print("No access")
-                manager.requestWhenInUseAuthorization()
-                break
-            case  .restricted, .denied:
-                showOpenSettingsAlerts()
-                break
-            case .authorizedAlways, .authorizedWhenInUse:
-                print("Full Access")
-                manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-                manager.requestLocation()
-            @unknown default:
-                break
-            }
-        } else {
-            print("Location services are not enabled")
-            showOpenSettingsAlerts()
+    //Handling Getting Address of Current or Selected Location and refreshes Address UI and Location Delegate
+    func handleAddressUI(location: CLLocationCoordinate2D, address: String?) {
+        self.addressLabel.text = address
+        self.addressLabel.textColor = .AccentColor
+        
+        if let currentLocation = self.currentLocation {
+            let selectedLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+            let currentLocationCLLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+            
+            let distanceInMeters = Double(selectedLocation.distance(from: currentLocationCLLocation))
+            self.delegate?.getLocationInfo(selectedLocation: location, distance: distanceInMeters, address: self.addressLabel.text ?? "")
         }
     }
 }
 
-
+//MARK:- Location Manager Delegate Functions
 extension LocationViewController: CLLocationManagerDelegate {
+    
     //Native Delegate Function whenever
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        self.checkLocationAuthorization(manager: manager)
+        self.locationManager?.checkLocationAuthorization(manager: manager, viewController: self)
     }
+    
     //Native Delegate Function whenever a fail happens during getting location
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         self.showToast(message: "Failed to get user's location: \(error.localizedDescription)", status: .info, position: .bottom)
     }
+    
     /*Native Delegate Function of CLLocation Manager whenever LocationRequest or
      StartLocationUpdates() Function is running this function gets the latest location
      */
@@ -90,83 +73,47 @@ extension LocationViewController: CLLocationManagerDelegate {
         if self.currentLocation == nil {
             self.currentLocation = location.coordinate
         }
-        refreshMap(location: location.coordinate)
+        self.locationManager?.refreshMap(location: location.coordinate, mapView: self.mapView, completion: { (address: String?) in
+            self.handleAddressUI(location: location.coordinate, address: address)
+        })
     }
     
-    //RefreshMap Function
-    func refreshMap(location: CLLocationCoordinate2D) {
-        self.mapView.clear()
-        let camera = GMSCameraPosition.camera(withLatitude: location.latitude, longitude: location.longitude, zoom: 15)
-        self.mapView.animate(to: camera)
-        // Creates a marker in the center of the map.
-        self.markLocation(coordinates: location)
-    }
-    /*Show Alert when Status of Locations service is Denied or restricted
-     to ask user to go to setting to enable Location Service for our app
-     */
-    private func showOpenSettingsAlerts() {
-        // if Disabled location features
-        let alert = UIAlertController(title: "Allow Location Access", message: "Smart Note Pad needs access to show your location. Turn on Location Services in your device settings.", preferredStyle: UIAlertController.Style.alert)
-        
-        // Button to Open Settings
-        alert.addAction(UIAlertAction(title: "Settings", style: UIAlertAction.Style.default, handler: { action in
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    print("Settings opened: \(success)")
-                })
-            }
-        }))
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
 }
-
+//MARK:- Googe Maps Delegate Functions
 extension LocationViewController: GMSMapViewDelegate {
+    
     //Handling didTap on Specific Location on Map Function
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
         self.showToast(message: "You tapped at \(coordinate.latitude.round(places: 2)),\(coordinate.longitude.round(places: 2)) long press to Select Different Location", status: .info, position: .bottom)
     }
+    
     //Handling Long Press on Specific Location on Map Function
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
-        refreshMap(location: coordinate)
+        
+        self.locationManager?.refreshMap(location: coordinate, mapView: self.mapView, completion: { (address: String?) in
+            self.handleAddressUI(location: coordinate, address: address)
+        })
     }
+//    //Refreshing map when u stay at specific position
+//    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+//        self.locationManager?.refreshMap(location: position.target, mapView: self.mapView, completion: { (address: String?) in
+//            self.handleAddressUI(location: position.target, address: address)
+//        })
+//    }
     //Handling Native Google Maps My Location Button
     func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
-        refreshMap(location: mapView.myLocation!.coordinate)
+        if let location = mapView.myLocation?.coordinate {
+            self.locationManager?.refreshMap(location: location, mapView: self.mapView, completion: { (address: String?) in
+                self.handleAddressUI(location: location, address: address)
+            })
+        }
         return true
     }
+    
+    //Clears the Maps from markers everytime it will move
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         self.mapView.clear()
     }
-    //Adding Marker to the Location
-    func markLocation(coordinates: CLLocationCoordinate2D) {
-        geocoder.reverseGeocodeCoordinate(coordinates) { (response, error) in
-            guard error == nil else {
-                return
-            }
-            
-            if let result = response?.firstResult() {
-                let marker = GMSMarker()
-                print("\(result)")
-                marker.position = coordinates
-                marker.title = result.lines?[0]
-                marker.snippet = result.thoroughfare
-                self.addressLabel.text = result.lines?[0] ?? ""
-                self.addressLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-                marker.map = self.mapView
-                if let currentLocation = self.currentLocation {
-                    let selectedLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
-                    let currentLocationCLLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
-                    
-                    let distanceInMeters = Double(selectedLocation.distance(from: currentLocationCLLocation))
-                    self.delegate?.getLocationInfo(selectedLocation: coordinates, distance: distanceInMeters, address: self.addressLabel.text ?? "")
-                }
-                
-            }
-        }
-    }
+    
 }

@@ -9,19 +9,23 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+//MARK:- Note Navigation Protocol
 protocol NoteNavigateDelegate {
     func navigateToNotesDetailsScreen(note: NoteModel?)
     func navigateToLocation(delegate: LocationDelegate)
 }
 
 class MyNotesListVC: BaseViewController {
+    //MARK:- Outlets
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var FirstNoteView: UIView!
     @IBOutlet weak var notesTableView: UITableView!
-    
+    //MARK:- Properties
     var navigationDelegate: NoteNavigateDelegate?
     let viewModel = Injection.container.resolve(NotePadViewModel.self)!
     var addNoteSelector: Selector?
+    
+    //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,18 +36,13 @@ class MyNotesListVC: BaseViewController {
         self.title = "Notes"
         bindViewModel()
         setupTableView()
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
     }
 }
 
-
-
+//MARK:- My Notes List VC Extension Which Includes binding of View Model & Setup TableView Functions
 extension MyNotesListVC {
     
+    //MARK:- Bind View Model Function
     func bindViewModel() {
         viewModel.liveNotes.bind { (data: [NoteModel]) in
             if data.count == 0 {
@@ -62,6 +61,7 @@ extension MyNotesListVC {
         }.disposed(by: self.viewModel.disposeBag)
     }
     
+    //MARK:- Setup Table View Function
     func setupTableView() {
         self.notesTableView.register(NoteCell.nib(), forCellReuseIdentifier: NoteCell.identifier)
         
@@ -78,7 +78,8 @@ extension MyNotesListVC {
 
         }.disposed(by: self.viewModel.disposeBag)
     }
-
+    
+    //MARK:- Configure Note Cell Function
     private func ConfigureNoteCell(tableView: UITableView, indexPath: IndexPath, model: NoteModel) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.identifier, for: indexPath) as? NoteCell else { return NoteCell()}
         var isNearest = false
@@ -90,7 +91,7 @@ extension MyNotesListVC {
         cell.config(title: model.title ?? "", noteDescription: model.noteDescription ?? "", isNearest: isNearest, constainsLocation: containsLocation, containsImage: containsImage)
         return cell
     }
-    
+    //MARK:- Add Note Function
     @objc func addNote() {
         self.navigationDelegate?.navigateToNotesDetailsScreen(note: nil)
     }

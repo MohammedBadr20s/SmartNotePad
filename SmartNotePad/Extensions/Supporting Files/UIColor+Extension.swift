@@ -12,6 +12,9 @@ import UIKit
 extension UIColor {
     
     @nonobjc class var lightGrey: UIColor {
-        return UIColor(named: "lightGrey")!
+        return UIColor(named: "lightGrey") ?? .lightGray
+    }
+    @nonobjc class var AccentColor: UIColor {
+        return UIColor(named: "AccentColor") ?? .black
     }
 }

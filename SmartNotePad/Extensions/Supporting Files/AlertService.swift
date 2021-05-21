@@ -14,7 +14,7 @@ class AlertService {
     static func showAlert(style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "Ok", style: .cancel, handler: nil)], completion: (() -> Swift.Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         
-        alert.view.tintColor = .black
+        alert.view.tintColor = .AccentColor
         DispatchQueue.main.async {
             for action in actions {
                 alert.addAction(action)

@@ -66,6 +66,8 @@
 	<string>Please Allow Access to Camera so you can take Photos</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please Allow Access to locations so you can specify a location</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Please Allow Access to locations so you can specify a location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Please Allow Access to Photo Library so you can select a photo</string>
 </dict>

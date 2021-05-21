@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGa-XN-XeD" customClass="GMSMapView">
-                        <rect key="frame" x="0.0" y="44" width="414" height="832"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="837"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-oJ-pPt">
@@ -25,7 +26,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZG-Ek-FIa">
                                 <rect key="frame" x="15" y="10" width="384" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -64,7 +65,7 @@
                     <constraint firstItem="eaw-F1-n4d" firstAttribute="trailing" secondItem="CGa-XN-XeD" secondAttribute="trailing" id="Qmv-D0-W9g"/>
                     <constraint firstItem="CGa-XN-XeD" firstAttribute="top" secondItem="eaw-F1-n4d" secondAttribute="top" id="Xq4-Cb-rN6"/>
                     <constraint firstAttribute="bottom" secondItem="lBD-oJ-pPt" secondAttribute="bottom" id="YMv-yt-3YG"/>
-                    <constraint firstItem="lBD-oJ-pPt" firstAttribute="top" secondItem="CGa-XN-XeD" secondAttribute="bottom" constant="-10" id="bSi-JY-8Ib"/>
+                    <constraint firstItem="lBD-oJ-pPt" firstAttribute="top" secondItem="CGa-XN-XeD" secondAttribute="bottom" constant="-15" id="bSi-JY-8Ib"/>
                     <constraint firstItem="lBD-oJ-pPt" firstAttribute="centerX" secondItem="eaw-F1-n4d" secondAttribute="centerX" id="eG2-O5-v1N"/>
                 </constraints>
             </view>
@@ -76,6 +77,9 @@
         </viewController>
     </objects>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

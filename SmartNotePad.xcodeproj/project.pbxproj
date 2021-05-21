@@ -94,6 +94,7 @@
 		E5B8FDEE2657CC2F002E1779 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8FDA92657CC2F002E1779 /* MessageView.swift */; };
 		E5B8FDF32657CCFD002E1779 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8FDF22657CCFD002E1779 /* Double+Extensions.swift */; };
 		E5B8FDF92657D1FA002E1779 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8FDF82657D1FA002E1779 /* ImagePickerManager.swift */; };
+		E5B8FE012657EEB0002E1779 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8FE002657EEB0002E1779 /* LocationManager.swift */; };
 		E5DBECD1265472330025D5BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBECD0265472330025D5BA /* AppDelegate.swift */; };
 		E5DBECD3265472330025D5BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBECD2265472330025D5BA /* SceneDelegate.swift */; };
 		E5DBECD8265472330025D5BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5DBECD6265472330025D5BA /* Main.storyboard */; };
@@ -235,6 +236,7 @@
 		E5B8FDA92657CC2F002E1779 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		E5B8FDF22657CCFD002E1779 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		E5B8FDF82657D1FA002E1779 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
+		E5B8FE002657EEB0002E1779 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E5DBECCD265472330025D5BA /* SmartNotePad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartNotePad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5DBECD0265472330025D5BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5DBECD2265472330025D5BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -362,9 +364,9 @@
 			children = (
 				E5B8FD3C2657C9F3002E1779 /* Cells */,
 				E5B8FD402657C9F3002E1779 /* MyNotesListVC.swift */,
-				E5B8FD412657C9F3002E1779 /* NotesDetailsVC.xib */,
-				E5B8FD432657C9F3002E1779 /* NotesDetailsVC.swift */,
 				E5B8FD442657C9F3002E1779 /* MyNotesListVC.xib */,
+				E5B8FD432657C9F3002E1779 /* NotesDetailsVC.swift */,
+				E5B8FD412657C9F3002E1779 /* NotesDetailsVC.xib */,
 				E5B8FD3F2657C9F3002E1779 /* LocationViewController.swift */,
 				E5B8FD422657C9F3002E1779 /* LocationViewController.xib */,
 			);
@@ -385,6 +387,7 @@
 			children = (
 				E5B8FDF72657D1EE002E1779 /* ImagePickerManager */,
 				E5B8FD632657CC2E002E1779 /* SwiftMessages */,
+				E5B8FE052657EEBE002E1779 /* LocationManager */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -479,6 +482,14 @@
 				E5B8FDF82657D1FA002E1779 /* ImagePickerManager.swift */,
 			);
 			path = ImagePickerManager;
+			sourceTree = "<group>";
+		};
+		E5B8FE052657EEBE002E1779 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				E5B8FE002657EEB0002E1779 /* LocationManager.swift */,
+			);
+			path = LocationManager;
 			sourceTree = "<group>";
 		};
 		E5DBECC4265472330025D5BA = {
@@ -992,6 +1003,7 @@
 				E5B8FDB12657CC2F002E1779 /* PassthroughView.swift in Sources */,
 				E5B8FDDF2657CC2F002E1779 /* CornerRoundingView.swift in Sources */,
 				E5DBEE1226548B420025D5BA /* Repository.swift in Sources */,
+				E5B8FE012657EEB0002E1779 /* LocationManager.swift in Sources */,
 				E5B8FDE62657CC2F002E1779 /* PassthroughWindow.swift in Sources */,
 				E5DBED52265473F40025D5BA /* Coordinator.swift in Sources */,
 				E5B8FDB22657CC2F002E1779 /* WindowViewController.swift in Sources */,
