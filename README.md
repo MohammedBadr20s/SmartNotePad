@@ -24,6 +24,18 @@ Open The project from SmartNotePad.xcworkspace
 6- You Can Add Image by Tapping Add Image View
 ```
 
+## Summary
+```python
+This App is Demo for:
+1- MVVM-C (Model View ViewModel Coordinator) Architecture Pattern
+2- Realm
+3- CoreLocation & Google Maps
+4- ImagePicker Controller
+5- Asking for permissions even if it's denied
+6- Unit Testing
+7- Project Schemes & Configurations
+```
+
 ## Project Schemes & Configurations
 ```python
 1- Smart Notepad is the LOCAL Environment which is responsible for Local Testing
