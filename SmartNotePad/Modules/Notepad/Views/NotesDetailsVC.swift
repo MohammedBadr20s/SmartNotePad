@@ -150,11 +150,7 @@ class NotesDetailsVC: BaseViewController {
         //Finding The Edit Button from NavigationItem's Right Bar Buttons
         if let item = self.navigationItem.rightBarButtonItems?.first(where: {$0.tag == 10}) {
             if item.title == "Edit" {
-                self.noteTitleTF.isUserInteractionEnabled = true
-                self.noteDescriptionTV.isUserInteractionEnabled = true
-                self.addImageView.isUserInteractionEnabled = true
-                self.addLocationView.isUserInteractionEnabled = true
-                item.title = "Done"
+                self.KeepTheDoneButton()
             } else {
                 self.noteTitleTF.isUserInteractionEnabled = false
                 self.noteDescriptionTV.isUserInteractionEnabled = false
@@ -169,6 +165,16 @@ class NotesDetailsVC: BaseViewController {
             }
         }
     }//END of Edit Note Function
+    
+    func KeepTheDoneButton() {
+        if let item = self.navigationItem.rightBarButtonItems?.first(where: {$0.tag == 10}) {
+            self.noteTitleTF.isUserInteractionEnabled = true
+            self.noteDescriptionTV.isUserInteractionEnabled = true
+            self.addImageView.isUserInteractionEnabled = true
+            self.addLocationView.isUserInteractionEnabled = true
+            item.title = "Done"
+        }
+    }
     
 }
 
@@ -199,6 +205,7 @@ extension NotesDetailsVC: UIImagePickerControllerDelegate, UINavigationControlle
             self.imagePickerManager?.saveToImagelocalStorage(image: image) { (imageName: String, imageURL: URL, imageSize: Double) in
 
                 attachDelegate?.fileAttached(fileName: imageName, file: imageURL, fileType: .image, fileSize: imageSize)
+                self.KeepTheDoneButton()
             }
             //dismiss(animated: true, completion: nil)
             picker.dismiss(animated: true, completion: nil)
@@ -263,6 +270,7 @@ extension NotesDetailsVC: LocationDelegate {
             self.note?.longitude.value = selectedLocation.longitude
             self.note?.locationAddress = address
         }
+        self.KeepTheDoneButton()
     }
     
     

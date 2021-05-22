@@ -101,7 +101,6 @@
 		E5DBECD8265472330025D5BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5DBECD6265472330025D5BA /* Main.storyboard */; };
 		E5DBECDA265472340025D5BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5DBECD9265472340025D5BA /* Assets.xcassets */; };
 		E5DBECDD265472340025D5BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5DBECDB265472340025D5BA /* LaunchScreen.storyboard */; };
-		E5DBECE8265472340025D5BA /* SmartNotePadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBECE7265472340025D5BA /* SmartNotePadTests.swift */; };
 		E5DBECF3265472340025D5BA /* SmartNotePadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBECF2265472340025D5BA /* SmartNotePadUITests.swift */; };
 		E5DBED4D265473E00025D5BA /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBED4C265473E00025D5BA /* Storyboarded.swift */; };
 		E5DBED52265473F40025D5BA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DBED51265473F40025D5BA /* Coordinator.swift */; };
@@ -247,7 +246,6 @@
 		E5DBECDC265472340025D5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5DBECDE265472340025D5BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5DBECE3265472340025D5BA /* SmartNotePadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartNotePadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5DBECE7265472340025D5BA /* SmartNotePadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartNotePadTests.swift; sourceTree = "<group>"; };
 		E5DBECE9265472340025D5BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5DBECEE265472340025D5BA /* SmartNotePadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartNotePadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5DBECF2265472340025D5BA /* SmartNotePadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartNotePadUITests.swift; sourceTree = "<group>"; };
@@ -535,7 +533,6 @@
 			isa = PBXGroup;
 			children = (
 				E50988F52658608E00820939 /* NotesListTests.swift */,
-				E5DBECE7265472340025D5BA /* SmartNotePadTests.swift */,
 				E5DBECE9265472340025D5BA /* Info.plist */,
 			);
 			path = SmartNotePadTests;
@@ -1059,7 +1056,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5DBECE8265472340025D5BA /* SmartNotePadTests.swift in Sources */,
 				E50988F62658608E00820939 /* NotesListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
