@@ -32,8 +32,9 @@ This App is Demo for:
 3- CoreLocation & Google Maps
 4- ImagePicker Controller
 5- Asking for permissions even if it's denied
-6- Unit Testing
-7- Project Schemes & Configurations
+6- Dark & Light Modes Supported
+7- Unit Testing
+8- Project Schemes & Configurations
 ```
 
 ## Project Schemes & Configurations
