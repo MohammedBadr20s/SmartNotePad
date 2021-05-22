@@ -17,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        #if PROD
+            print("Production Environment build")
+        #elseif Dev
+            print("Dev Environment build")
+        #elseif DEBUG
+            print("Local Development build")
+        #endif
+        
         Injection.register()
         guard #available(iOS 13, *) else {
             let nvc = UINavigationController()

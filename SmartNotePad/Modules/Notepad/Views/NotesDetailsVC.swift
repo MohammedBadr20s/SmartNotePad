@@ -55,6 +55,11 @@ class NotesDetailsVC: BaseViewController {
     //Get Note Data if exists
     func getNoteInfo() {
         if self.note != nil {
+            self.noteTitleTF.isUserInteractionEnabled = false
+            self.noteDescriptionTV.isUserInteractionEnabled = false
+            self.addImageView.isUserInteractionEnabled = false
+            self.addLocationView.isUserInteractionEnabled = false
+            self.addEditAndDeleteButtons(deleteBtnSelector: #selector(deleteNote), editBtnSelector: #selector(editNote))
             self.noteTitleTF.text = self.note?.title
             if self.note?.noteDescription == nil {
                 noteDescriptionTV.text = "Note Body Here"
@@ -66,15 +71,12 @@ class NotesDetailsVC: BaseViewController {
             self.locationAddressLbl.text = self.note?.locationAddress ?? "Add Location"
             if self.note?.locationAddress != nil {
                 self.locationAddressLbl.textColor = .AccentColor
+                self.KeepTheDoneButton()
             }
             if let path = note?.imagePath, let url = URL(string: path) {
                 self.setupImageUI(url: url)
             }
-            self.noteTitleTF.isUserInteractionEnabled = false
-            self.noteDescriptionTV.isUserInteractionEnabled = false
-            self.addImageView.isUserInteractionEnabled = false
-            self.addLocationView.isUserInteractionEnabled = false
-            self.addEditAndDeleteButtons(deleteBtnSelector: #selector(deleteNote), editBtnSelector: #selector(editNote))
+            
         }
     }
     //Configuring UI of the View
@@ -270,7 +272,7 @@ extension NotesDetailsVC: LocationDelegate {
             self.note?.longitude.value = selectedLocation.longitude
             self.note?.locationAddress = address
         }
-        self.KeepTheDoneButton()
+        
     }
     
     
